@@ -17,26 +17,26 @@ pipeline {
         stage('Buila and Publish') {
             steps {
             // Build and publish the ASP.NET Core application
-            script {
-	            sh 'dotnet restore'
-	            sh 'dotnet build -- configuration Release'
-	            sh 'dotnet publish -- configuration Release -- output bin/publish'  
-            }
+	            script {
+		            sh 'dotnet restore'
+		            sh 'dotnet build -- configuration Release'
+		            sh 'dotnet publish -- configuration Release -- output bin/publish'  
+	            }
             }
         }
           stage('Deploy to Azure Web App') {
-steps {
-// Deploy to Azure Web App using Azure App Service Deploy plugin
-script {
-azureWebAppPublish appName: 'YourAzureWebAppNameT,
-resourceGroup: 'YourResourceGroup',
-filePath: 'bin/publish',
-publishType: 'filePath',
-targetDirectory: '/site/wwwroot'
-}
-}
-          }
-        }
+		steps {
+		// Deploy to Azure Web App using Azure App Service Deploy plugin
+			script {
+				azureWebAppPublish appName: 'YourAzureWebAppNameT,
+				resourceGroup: 'YourResourceGroup',
+				filePath: 'bin/publish',
+				publishType: 'filePath',
+				targetDirectory: '/site/wwwroot'
+				}
+			}
+ }
+		        }
 }
 
 // pipeline {
