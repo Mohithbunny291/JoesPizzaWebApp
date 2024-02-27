@@ -28,8 +28,8 @@ pipeline {
 		steps {
 		// Deploy to Azure Web App using Azure App Service Deploy plugin
 			script {
-				azureWebAppPublish appName: 'YourAzureWebAppNameT,
-				resourceGroup: 'YourResourceGroup',
+				azureWebAppPublish appName: 'mywebappdemoapp.azurewebsites.net',
+				resourceGroup: 'ODL-azure-1244094',
 				filePath: 'bin/publish',
 				publishType: 'filePath',
 				targetDirectory: '/site/wwwroot'
